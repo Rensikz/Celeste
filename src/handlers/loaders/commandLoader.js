@@ -289,6 +289,29 @@ async function registerGlobalCommands(client, clientId, commands, totalSubcomman
 
     logger.info(`Registering ${commandsToRegister.length} global commands...`);
     await client.rest.put(`/applications/${clientId}/commands`, { body: commandsToRegister });
+    console.log(
+  '### DEBUG: LETRA NO ENVIO:',
+  commandsToRegister.some(command => command.name === 'letra')
+);
+
+console.log(
+  '### DEBUG: TOTAL ENVIADO:',
+  commandsToRegister.length
+);
+
+const discordCommands = await client.rest.get(
+  `/applications/${clientId}/commands`
+);
+
+console.log(
+  '### DEBUG: LETRA CONFIRMADO PELO DISCORD:',
+  discordCommands.some(command => command.name === 'letra')
+);
+
+console.log(
+  '### DEBUG: TOTAL RETORNADO PELO DISCORD:',
+  discordCommands.length
+);
     logger.info(`Successfully registered ${commandsToRegister.length} global commands`);
     logger.info('Global commands may take up to an hour to appear in all servers on first deploy');
 }
