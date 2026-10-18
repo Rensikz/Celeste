@@ -58,7 +58,16 @@ export async function loadCommands(client) {
     const commandsPath = path.join(__dirname, '../../commands');
     const commandFiles = await getAllFiles(commandsPath);
 
-
+    console.log('### DIRETÓRIO DE COMANDOS:', commandsPath);
+    console.log('### TOTAL DE ARQUIVOS:', commandFiles.length);
+    
+    console.log(
+  '### ARQUIVOS COM LETRA NO CAMINHO:',
+     commandFiles.filter(file =>
+     file.toLowerCase().includes('letra')
+  )
+);
+    
     
     logger.info(`Found ${commandFiles.length} command files to load`);
     
