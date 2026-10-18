@@ -80,6 +80,14 @@ export async function loadCommands(client) {
             command.filePath = normalizedPath;
             
             const primaryCommandName = command.data.name;
+
+            if (primaryCommandName === 'letra') {
+                  logger.info(`DEBUG LETRA: encontrado em ${normalizedPath}`);
+                }
+                
+                if (uniqueCommandNames.has(primaryCommandName)) {
+                  logger.warn(`DEBUG DUPLICADO: ${primaryCommandName} em ${normalizedPath}`);
+                }
             
             if (!uniqueCommandNames.has(primaryCommandName)) {
                 uniqueCommandNames.add(primaryCommandName);
