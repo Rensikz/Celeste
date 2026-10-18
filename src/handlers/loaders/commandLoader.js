@@ -83,6 +83,12 @@ export async function loadCommands(client) {
             
             const commandModule = await import(`file://${filePath}`);
             const command = commandModule.default || commandModule;
+
+            if (filePath.toLowerCase().includes('/letra.js')) {
+              console.log('### DEBUG: IMPORT DO LETRA CONCLUÍDO');
+              console.log('### DEBUG: COMMAND DATA:', command.data?.name);
+              console.log('### DEBUG: EXECUTE:', typeof command.execute);
+                }
             
             if (!command.data || !command.execute) {
                 logger.warn(`Command at ${filePath} is missing required "data" or "execute" property.`);
@@ -106,6 +112,9 @@ export async function loadCommands(client) {
                 uniqueCommandNames.add(primaryCommandName);
                 
                 client.commands.set(primaryCommandName, command);
+                if (primaryCommandName === 'letra') {
+                  console.log('### DEBUG: LETRA ADICIONADO À COLEÇÃO');
+                    }
             }
             
             const subcommands = getSubcommandInfo(command.data.toJSON());
