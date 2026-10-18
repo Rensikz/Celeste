@@ -24,7 +24,7 @@ export const botConfig = {
     activities: [
       {
         name: "Custom Status", // required by Discord API, not shown in the client
-        state: "Oiii! x3.",     // this is what people actually see
+        state: "Oiii! x3",     // this is what people actually see
         type: 4,               // Custom
       },
     ],
@@ -97,10 +97,10 @@ export const botConfig = {
       secondary: "#000000",
 
       // Standard status colors for success/error/warning/info messages.
-      success: "#57F287",
+      success: "#F154FF",
       error: "#ED4245",
       warning: "#FEE75C",
-      info: "#3498DB",
+      info: "#FFC800",
 
       // Neutral utility colors.
       light: "#FFFFFF",
