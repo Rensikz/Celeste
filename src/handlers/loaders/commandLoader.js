@@ -63,7 +63,7 @@ export async function loadCommands(client) {
     console.log(
       '### ARQUIVOS LETRA:',
     files.filter(file => file.toLowerCase().includes('letra'))
-);
+    );
     
     logger.info(`Found ${commandFiles.length} command files to load`);
     
