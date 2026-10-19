@@ -1,29 +1,99 @@
+
 import { SlashCommandBuilder } from 'discord.js';
 import { successEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
 import { TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
-
 import { InteractionHelper } from '../../utils/interactionHelper.js';
+
+const NORMAL_COMMENT_CHANCE = 0.15;
+const NORMAL_COMMENT_COOLDOWN = 60_000;
+
+// Cooldown em memória: separado por jogador.
+const lastNormalComment = new Map();
+
+const criticalFailures = [
+  'Oops! Parece que você se deu mal. xD',
+  'Impressionante. Eu teria que me esforçar para fazer pior.',
+  'Você fez isso de propósito? Por favor, diga que sim.',
+  'A probabilidade estava contra você. Brincadeira, foi só azar.',
+  'Vou fingir que não vi isso. Não prometo nada.',
+];
+
+const criticalSuccesses = [
+  'OHHH! Temos um profissional entre nós. Por acidente, aparentemente.',
+  'Isso foi calculado ou você enganou a probabilidade?',
+  'Muito bem! Quase pareceu que você sabia o que estava fazendo.',
+  'Um resultado desses merece ser registrado nos meus arquivos.',
+  'Olha só! Até eu estou impressionada. Não se acostume.',
+];
+
+const normalComments = [
+  'Interessante... vamos ver onde isso vai dar.',
+  'Anotado. Continuem, estou observando.',
+  'As probabilidades são curiosas, não são?',
+  'Hmmm. Não vou julgar. Ainda.',
+  'Mais uma rolagem para os meus registros.',
+];
+
+function pickRandom(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function getCelesteComment({
+  numSides,
+  rolls,
+  userId,
+}) {
+  // Reações especiais somente para dados de 20 faces.
+  if (numSides === 20) {
+    if (rolls.includes(1)) {
+      return pickRandom(criticalFailures);
+    }
+
+    if (rolls.includes(20)) {
+      return pickRandom(criticalSuccesses);
+    }
+  }
+
+  // Comentários comuns têm chance e cooldown próprios.
+  if (Math.random() >= NORMAL_COMMENT_CHANCE) {
+    return null;
+  }
+
+  const now = Date.now();
+  const lastComment = lastNormalComment.get(userId) ?? 0;
+
+  if (now - lastComment < NORMAL_COMMENT_COOLDOWN) {
+    return null;
+  }
+
+  lastNormalComment.set(userId, now);
+  return pickRandom(normalComments);
+}
+
 export default {
-    data: new SlashCommandBuilder()
-    .setName("roll")
-    .setDescription("Rolls dice using standard notation (e.g., 2d20, 1d6 + 5).")
+  data: new SlashCommandBuilder()
+    .setName('roll')
+    .setDescription(
+      'Rolls dice using standard notation (e.g., 2d20, 1d6 + 5).'
+    )
     .addStringOption((option) =>
       option
-        .setName("notation")
-        .setDescription("The dice notation (e.g., 2d6, 1d20 + 4)")
+        .setName('notation')
+        .setDescription('The dice notation (e.g., 2d6, 1d20 + 4)')
         .setRequired(true)
-        .setMaxLength(50),
+        .setMaxLength(50)
     ),
+
   category: 'Fun',
 
   async execute(interaction, config, client) {
     await InteractionHelper.safeDefer(interaction);
 
     const notation = interaction.options
-      .getString("notation")
+      .getString('notation')
       .toLowerCase()
-      .replace(/\s/g, "");
+      .replace(/\s/g, '');
 
     const match = notation.match(/^(\d*)d(\d+)([\+\-]\d+)?$/);
 
@@ -35,9 +105,9 @@ export default {
       );
     }
 
-    const numDice = parseInt(match[1] || "1", 10);
+    const numDice = parseInt(match[1] || '1', 10);
     const numSides = parseInt(match[2], 10);
-    const modifier = parseInt(match[3] || "0", 10);
+    const modifier = parseInt(match[3] || '0', 10);
 
     if (numDice < 1 || numDice > 20) {
       throw new TitanBotError(
@@ -55,7 +125,7 @@ export default {
       );
     }
 
-    let rolls = [];
+    const rolls = [];
     let totalRoll = 0;
 
     for (let i = 0; i < numDice; i++) {
@@ -67,15 +137,36 @@ export default {
     const finalTotal = totalRoll + modifier;
 
     const resultsDetail =
-      numDice > 1 ? `**Rolls:** ${rolls.join(" + ")}\n` : "";
-    const modifierText = modifier !== 0 ? `+ (${modifier})` : "";
+      numDice > 1 ? `**Rolls:** ${rolls.join(' + ')}\n` : '';
+
+    const modifierText = modifier !== 0
+      ? `+ (${modifier})`
+      : '';
+
+    let description =
+      `${resultsDetail}**Total Roll:** ${totalRoll}${modifierText} = **${finalTotal}**`;
+
+    const celesteComment = getCelesteComment({
+      numSides,
+      rolls,
+      userId: interaction.user.id,
+    });
+
+    if (celesteComment) {
+      description += `\n\n💬 **Celeste:** ${celesteComment}`;
+    }
 
     const embed = successEmbed(
-      `🎲 Rolling ${numDice}d${numSides}${modifier !== 0 ? match[3] : ""}`,
-      `${resultsDetail}**Total Roll:** ${totalRoll}${modifierText} = **${finalTotal}**`,
+      `🎲 Rolling ${numDice}d${numSides}${modifier !== 0 ? match[3] : ''}`,
+      description
     );
 
-    await InteractionHelper.safeEditReply(interaction, { embeds: [embed] });
-    logger.debug(`Roll command executed by user ${interaction.user.id} with notation ${notation} in guild ${interaction.guildId}`);
+    await InteractionHelper.safeEditReply(interaction, {
+      embeds: [embed],
+    });
+
+    logger.debug(
+      `Roll command executed by user ${interaction.user.id} with notation ${notation} in guild ${interaction.guildId}`
+    );
   },
 };
