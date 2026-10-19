@@ -4,13 +4,13 @@ import { successEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
 import { TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
 import { InteractionHelper } from '../../utils/interactionHelper.js';
-import { celesteReactions } from '../../data/celesteReactions.js';
-
+import celesteReactions from '../../data/celesteReactions.js';
 
 const NORMAL_COMMENT_CHANCE = 0.15;
 const NORMAL_COMMENT_COOLDOWN = 60_000;
 const AFFECTION_CHANCE = 0.03;
 
+// Cooldown em memória, separado por jogador.
 const lastNormalComment = new Map();
 
 function pickRandom(array) {
@@ -18,8 +18,9 @@ function pickRandom(array) {
 }
 
 function getCelesteComment({ numSides, rolls, userId }) {
-  // Reações especiais: sempre que houver 1 ou 20 natural no d20.
+  // Reações especiais para dados de 20 faces.
   if (numSides === 20) {
+    // A falha tem prioridade se houver 1 e 20 na mesma rolagem.
     if (rolls.includes(1)) {
       return pickRandom(celesteReactions.criticalFailure);
     }
@@ -29,7 +30,7 @@ function getCelesteComment({ numSides, rolls, userId }) {
     }
   }
 
-  // Cooldown individual para comentários comuns.
+  // Cooldown individual para comentários comuns e afetuosos.
   const now = Date.now();
   const lastComment = lastNormalComment.get(userId) ?? 0;
 
@@ -37,59 +38,19 @@ function getCelesteComment({ numSides, rolls, userId }) {
     return null;
   }
 
-  // Uma chance menor de a Celeste revelar que se importa.
+  // Pequena chance de demonstrar afeto e imediatamente se arrepender.
   if (Math.random() < AFFECTION_CHANCE) {
     lastNormalComment.set(userId, now);
     return pickRandom(celesteReactions.affection);
   }
 
-  // Comentários comuns e ocasionais.
+  // Comentários comuns são ocasionais.
   if (Math.random() < NORMAL_COMMENT_CHANCE) {
     lastNormalComment.set(userId, now);
     return pickRandom(celesteReactions.normal);
   }
 
   return null;
-}
-
-
-const NORMAL_COMMENT_CHANCE = 0.15;
-const NORMAL_COMMENT_COOLDOWN = 60_000;
-
-// Cooldown em memória: separado por jogador.
-const lastNormalComment = new Map();
-
-
-function pickRandom(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
- {
-  // Reações especiais somente para dados de 20 faces.
-  if (numSides === 20) {
-    if (rolls.includes(1)) {
-      return pickRandom(criticalFailures);
-    }
-
-    if (rolls.includes(20)) {
-      return pickRandom(criticalSuccesses);
-    }
-  }
-
-  // Comentários comuns têm chance e cooldown próprios.
-  if (Math.random() >= NORMAL_COMMENT_CHANCE) {
-    return null;
-  }
-
-  const now = Date.now();
-  const lastComment = lastNormalComment.get(userId) ?? 0;
-
-  if (now - lastComment < NORMAL_COMMENT_COOLDOWN) {
-    return null;
-  }
-
-  lastNormalComment.set(userId, now);
-  return pickRandom(normalComments);
 }
 
 export default {
