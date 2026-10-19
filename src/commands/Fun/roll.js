@@ -4,6 +4,54 @@ import { successEmbed } from '../../utils/embeds.js';
 import { logger } from '../../utils/logger.js';
 import { TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
 import { InteractionHelper } from '../../utils/interactionHelper.js';
+import { celesteReactions } from '../../data/celesteReactions.js';
+
+
+const NORMAL_COMMENT_CHANCE = 0.15;
+const NORMAL_COMMENT_COOLDOWN = 60_000;
+const AFFECTION_CHANCE = 0.03;
+
+const lastNormalComment = new Map();
+
+function pickRandom(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function getCelesteComment({ numSides, rolls, userId }) {
+  // Reações especiais: sempre que houver 1 ou 20 natural no d20.
+  if (numSides === 20) {
+    if (rolls.includes(1)) {
+      return pickRandom(celesteReactions.criticalFailure);
+    }
+
+    if (rolls.includes(20)) {
+      return pickRandom(celesteReactions.criticalSuccess);
+    }
+  }
+
+  // Cooldown individual para comentários comuns.
+  const now = Date.now();
+  const lastComment = lastNormalComment.get(userId) ?? 0;
+
+  if (now - lastComment < NORMAL_COMMENT_COOLDOWN) {
+    return null;
+  }
+
+  // Uma chance menor de a Celeste revelar que se importa.
+  if (Math.random() < AFFECTION_CHANCE) {
+    lastNormalComment.set(userId, now);
+    return pickRandom(celesteReactions.affection);
+  }
+
+  // Comentários comuns e ocasionais.
+  if (Math.random() < NORMAL_COMMENT_CHANCE) {
+    lastNormalComment.set(userId, now);
+    return pickRandom(celesteReactions.normal);
+  }
+
+  return null;
+}
+
 
 const NORMAL_COMMENT_CHANCE = 0.15;
 const NORMAL_COMMENT_COOLDOWN = 60_000;
@@ -11,39 +59,12 @@ const NORMAL_COMMENT_COOLDOWN = 60_000;
 // Cooldown em memória: separado por jogador.
 const lastNormalComment = new Map();
 
-const criticalFailures = [
-  'Oops! Parece que você se deu mal. xD',
-  'Impressionante. Eu teria que me esforçar para fazer pior.',
-  'Você fez isso de propósito? Por favor, diga que sim.',
-  'A probabilidade estava contra você. Brincadeira, foi só azar.',
-  'Vou fingir que não vi isso. Não prometo nada.',
-];
-
-const criticalSuccesses = [
-  'OHHH! Temos um profissional entre nós. Por acidente, aparentemente.',
-  'Isso foi calculado ou você enganou a probabilidade?',
-  'Muito bem! Quase pareceu que você sabia o que estava fazendo.',
-  'Um resultado desses merece ser registrado nos meus arquivos.',
-  'Olha só! Até eu estou impressionada. Não se acostume.',
-];
-
-const normalComments = [
-  'Interessante... vamos ver onde isso vai dar.',
-  'Anotado. Continuem, estou observando.',
-  'As probabilidades são curiosas, não são?',
-  'Hmmm. Não vou julgar. Ainda.',
-  'Mais uma rolagem para os meus registros.',
-];
 
 function pickRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function getCelesteComment({
-  numSides,
-  rolls,
-  userId,
-}) {
+ {
   // Reações especiais somente para dados de 20 faces.
   if (numSides === 20) {
     if (rolls.includes(1)) {
