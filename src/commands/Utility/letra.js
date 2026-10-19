@@ -1,15 +1,16 @@
 
-import { SlashCommandBuilder } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import musicLyrics from '../../data/musicLyrics.js';
 
-const MESSAGE_LIMIT = 1900;
+const EMBED_DESCRIPTION_LIMIT = 3900;
+const DEFAULT_COLOR = 0xB9A0FF;
 
-function splitMessage(text, limit = MESSAGE_LIMIT) {
+function splitLyrics(text, limit = EMBED_DESCRIPTION_LIMIT) {
   const chunks = [];
   let current = '';
 
   for (const line of text.split('\n')) {
-    // Divide linhas individuais que excedam o limite.
+    // Divide versos individuais que ultrapassem o limite.
     if (line.length > limit) {
       if (current) {
         chunks.push(current);
@@ -28,18 +29,45 @@ function splitMessage(text, limit = MESSAGE_LIMIT) {
       : line;
 
     if (candidate.length > limit) {
-      chunks.push(current);
+      if (current) chunks.push(current);
       current = line;
     } else {
       current = candidate;
     }
   }
 
-  if (current) {
-    chunks.push(current);
+  if (current) chunks.push(current);
+
+  return chunks.length ? chunks : ['*Nenhuma letra cadastrada.*'];
+}
+
+function createLyricsEmbed(song, chunk, index, total) {
+  const embed = new EmbedBuilder()
+    .setColor(song.color ?? DEFAULT_COLOR)
+    .setAuthor({
+      name: 'CELESTE  •  ARQUIVO MUSICAL',
+    })
+    .setTitle(`♫ ${song.title}${total > 1 ? ` — Parte ${index + 1}` : ''}`)
+    .setDescription(chunk)
+    .setFooter({
+      text: total > 1
+        ? `CELESTE • Arquivo musical • ${index + 1}/${total}`
+        : 'CELESTE • Arquivo musical',
+    });
+
+  // Capa opcional definida no catálogo da música.
+  if (song.cover && index === 0) {
+    embed.setThumbnail(song.cover);
   }
 
-  return chunks;
+  // Descrição opcional abaixo do título.
+  if (song.artist && index === 0) {
+    embed.setDescription(
+      `*${song.artist}*\n\n${chunk}`
+    );
+  }
+
+  return embed;
 }
 
 export default {
@@ -105,13 +133,16 @@ export default {
         return;
       }
 
-      const chunks = splitMessage(
-        `♫ ${song.title}\n\n${song.lyrics}`
+      const chunks = splitLyrics(song.lyrics);
+      const embeds = chunks.map((chunk, index) =>
+        createLyricsEmbed(song, chunk, index, chunks.length)
       );
 
-      for (const chunk of chunks) {
+      // O Discord aceita até 10 embeds por mensagem.
+      // Enviamos em grupos para suportar letras extensas.
+      for (let i = 0; i < embeds.length; i += 10) {
         await channel.send({
-          content: chunk,
+          embeds: embeds.slice(i, i + 10),
           allowedMentions: { parse: [] },
         });
       }
@@ -128,4 +159,3 @@ export default {
     }
   },
 };
-
