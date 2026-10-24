@@ -7,17 +7,17 @@
 //0x4169E1: azul
 
 export default {
-  carcosa: {
-    title: 'Carcosa',
-    artist: 'Teste',
-    color: 0xB9A0FF, //roxo
-    cover: 'https://i.pinimg.com/736x/28/51/51/285151a4bec388bbcc64efd5105fd492.jpg',
-    lyrics: `Insira aqui o texto que você tem autorização para publicar.
+//  carcosa: {
+//    title: 'Carcosa',
+//    artist: 'Teste',
+//    color: 0xB9A0FF, //roxo
+//    cover: 'https://i.pinimg.com/736x/28/51/51/285151a4bec388bbcc64efd5105fd492.jpg',
+//    lyrics: `Insira aqui o texto que você tem autorização para publicar.
 
-Insira o próximo verso nesta linha.
+//Insira o próximo verso nesta linha.
 
-E continue adicionando os versos.`,
-  },
+//E continue adicionando os versos.`,
+//  },
 
     You_make_me_sick: {
     title: 'You make me sick',
