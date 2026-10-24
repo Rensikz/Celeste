@@ -19,13 +19,45 @@ Insira o próximo verso nesta linha.
 E continue adicionando os versos.`,
   },
 
-  minha_musica: {
-    title: 'Minha Música',
-    artist: '',
-    color: 0xB9A0FF,
-    cover: '',
-    lyrics: `Insira aqui o texto da segunda música.`,
+  Salvation_exe: {
+    title: 'Salvation.exe',
+    artist: 'Dysmn',
+    color: 0xE32300,
+    cover: 'https://i.pinimg.com/736x/79/02/13/790213aa47bf2a9bdac6ceb2be227acb.jpg',
+    lyrics: `When god lays waste to the world
+             I loved, hearts beat still as we
+             Fall.
+
+             When you see the world is falling
+             There's no meaning for destruction
+             When you see the end has come now
+             There's no meaning
+             There's no meaning
+             
+             When the void is all-surroundings
+             Take some time to look at yourself
+             Salvation
+             Is not
+             Kind to the
+             Weak soul    
+            
+             When the void is all-surroundings
+             Take some time to look at yourself
+             Salvation
+             Is not
+             Kind to the
+             Weak soul
+    
+             Eyes are bleeding
+             Gods are dying
+             Lies are worthless
+             Constant fighting
+            
+             Worlds are clashing
+             Eyes are spying
+             I will just fight through the night`,
   },
+  
 
     L1K3_Y0U: {
     title: 'L1K3_Y0U',
