@@ -18,6 +18,78 @@ Insira o próximo verso nesta linha.
 
 E continue adicionando os versos.`,
   },
+  
+  Cancel: {
+    title: 'Cancel!',
+    artist: 'Mayonazy',
+    color: 0xA1A1A1, //cinza
+    cover: 'https://i.pinimg.com/736x/3c/9e/f5/3c9ef55c80e98adbe10aca8de84d67ae.jpg',
+    lyrics: `
+              Cancel, cancel, cancel, cancel
+              Why you still here?
+              Cancel, cancel, cancel, cancel
+              You should die, die!
+              
+              
+              Eyes, eyes, eyes on me
+              Lies, lies, lies, set me free
+              Eyes, eyes, eyes on me
+              Lies, lies, lies
+              
+             
+              A crown of thorns upon my head, faking a laugh, but I'm not fine
+              Every praise still feels like heaven when every mirror tеlls a lie
+              Even my pain fulfills a dream of knowing that I'm still alivе
+              Wrapping the chains around me, still protecting what I need to hide
+              
+             
+              Cut you open, twisting all your words to lies
+              Every scar you wear will never really heal
+              Center of the stage, no one can ever deny
+              That this is the place where only hate is real
+              Cut me open and you'll see what's true inside
+              Every scar is hiding how I really feel
+              All I ever wanted was to be more than shadows
+              To be more than pretending to be real
+             
+              Cancel, cancel, cancel, cancel
+              Why you still here?
+              Cancel, cancel, cancel, cancel
+              You should die
+              Cancel, cancel, cancel, cancel
+              Why you still here?
+              Cancel, cancel, cancel, cancel
+              You should die, die
+              (Cancel, cancel, cancel, cancel) Die, die
+              (Cancel, cancel, cancel, cancel) Die, die
+              (Cancel, cancel, cancel, cancel) Die, die
+              (Cancel, cancel, cancel, cancel) You should die
+              (Cancel, cancel, cancel, cancel) Die, die, die, die
+              (Cancel, cancel, cancel, cancel) Die, die, die, die
+              (Cancel, cancel, cancel, cancel) You should die, die!
+              
+              A crown of thorns upon my head, faking a laugh, but I'm not fine
+              Every praise still feels like heaven when every mirror tells a lie
+              Even my pain fulfills a dream of knowing that I'm still alive
+              Wrapping the chains around me, still protecting what I need to hide
+              
+              Eyes, eyes, eyes on me
+              Lies, lies, lies, set me free
+              Eyes, eyes, eyes on me
+              Lies, lies, lies, set me free
+
+              Cut you open, twisting all your words to lies
+              Every scar you wear will never really heal
+              Center of the stage, no one can ever deny
+              That this is the place where only hate is real
+              Cut me open and you'll see what's true inside
+              Every scar is hiding how I really feel
+              All I ever wanted was to be more than shadows
+              To be more than pretending to be real
+              
+
+              Die, die!`,
+  },
 
   R0T: {
     title: 'ROT!',
