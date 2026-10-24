@@ -18,6 +18,64 @@ Insira o próximo verso nesta linha.
 
 E continue adicionando os versos.`,
   },
+
+    Silence: {
+    title: 'Silence',
+    artist: 'Heavenwraith',
+    color: 0x4169E1, 
+    cover: 'https://i.pinimg.com/736x/d5/12/9d/d5129d4c41a3b379994a87b4b8f5895a.jpg',
+    lyrics: `Save all your praises, it's been getting old
+            Spare me the pretense of guilt you've never known
+            
+            I see the reflection on the edge of my mind
+            A freak show with a charade of your design
+            This feels like endlessly falling (falling down)
+            In confines of this empty body
+            
+            I
+            Terrified and lonely
+            Shroud myself
+            Turning hollow slowly
+            In silence
+            Smother out the constant nightmares
+            But I can't escape
+            Agonizing noises
+            Screeching yells
+            Tear me from my solace
+            Insidе me
+            Burning out the will to change mе
+            Disconnected from the pain, will it ever feel the same again
+            To hear the melody one more time
+            
+            Will I hear you say "Tomorrow won't be the same"
+            Can I feign my faith in your wondrous rotten tales
+            
+            
+            Lost in the depths of cold uncaring void
+            Twisted memories holding me paralyzed
+            Lost in silence
+            
+            I still hear your demons whisperin' in silence
+            Your venom feeds my limerence in silence
+            
+            I
+            Terrified and lonely
+            Shroud myself
+            Turning hollow slowly
+            In silence
+            Smother out the constant nightmares
+            But I can't escape
+            Agonizing noises
+            Screeching yells
+            Tear me from my solace
+            Inside me
+            Burning out the will to change me
+            Disconnected from the pain, will it ever feel the same again
+            To hear the melody one more time
+
+            Lost in silence
+            Empty silence`,
+  },
   
   Cancel: {
     title: 'Cancel!',
