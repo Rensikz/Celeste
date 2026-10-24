@@ -19,6 +19,70 @@ Insira o próximo verso nesta linha.
 E continue adicionando os versos.`,
   },
 
+    You_make_me_sick: {
+    title: 'You make me sick',
+    artist: 'bitbreaker',
+    color: 0x8B0000, 
+    cover: 'https://i.pinimg.com/736x/1c/29/ec/1c29ec3ead1797d0e6d3f932492d2004.jpg',
+    lyrics: `Go
+    
+            I should've known right from the start
+            That you had set your sights on breaking my heart
+            A well-rehearsed routine, a human-shaped machine
+            What a worthless waste of time
+            
+            I wanna feel (Woah, woah)
+            Something that is real (Woah, woah)
+            (Let me break it down)
+          
+            Don't waste your time, boy
+            You'll never be worth it, never deserve it
+            Just stay away, boy
+            You've let me down again, you make me sick
+            Now get it through your head
+            You'll never be worth it (Never be worth it)
+            Never deserve it (Never deserve it)
+            
+            Another day spent in the dark
+            Wondering where we fell apart
+            A sudden flash of light brings clarity inside
+            I deserve much more than this
+            
+            I wanna feel (Woah, woah)
+            Something that is real (Woah, woah)
+            (Let me break it down)
+            
+            Don't waste your time, boy
+            You'll never be worth it, never deserve it
+            Just stay away, boy
+            You've let me down again, you make me sick
+            Now get it through your head
+            You'll never be worth it (Never be worth it)
+            Never deserve it (Never deserve it)
+            
+            I'm at the end of my rope
+            I can't do this anymore
+            I'm in control, I'm in control
+            
+            Don't waste your time, boy
+            You'll never be worth it, never deserve it
+            Just stay away, boy
+            You've let me down again
+            You make me sick, now get it through your head
+            You'll never be worth it (Never be worth it)
+            Never deserve it
+
+            (Never be worth it, never deserve it) Woah
+            (Never be worth it, never deserve it)
+            You've let me down again
+            You make me sick, boy, get it through your head
+            You'll never be worth it (Never be worth it)
+            Never deserve it
+            
+            You make me sick, sick
+            You make me sick, sick`,
+  },
+
     Silence: {
     title: 'Silence',
     artist: 'Heavenwraith',
