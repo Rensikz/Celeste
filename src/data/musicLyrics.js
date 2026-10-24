@@ -19,6 +19,118 @@ Insira o próximo verso nesta linha.
 E continue adicionando os versos.`,
   },
 
+  R0T: {
+    title: 'ROT!',
+    artist: 'Vane Lily',
+    color: 0xB8D600, //roxo
+    cover: 'https://i.pinimg.com/1200x/76/d3/25/76d325de6cf58303370d087c00288493.jpg',
+    lyrics: ` Query: what mortal thing can lay bleeding
+              An ersatz human, but a copy
+              Is this impression deemed worthy?
+              Or definitionally -
+              
+              Pity: A morbid play of moral theory
+              Behind each line a hidden meaning
+              Reanalyze the wired weaving
+              My iron lung breathing
+              
+              Pick a GOD, automaton
+              March with your mob
+              Indistinct facade
+              Repeating moments fade to black
+              
+              Not a prayer can change your fate
+              Short-circuit waste
+              No charge to trace
+              Broken interface
+              
+              Carnal atonality, imitate humanity
+              Crucified anomaly, entertaining vanity
+              
+              Watch it ROT, automaton
+              Compassion gone
+              Your eschaton
+              Knelt before the toll
+              I beg of thee, reverse these rusted roles
+              
+              Cauterized and dull
+              (Lo, how thy heart grow ever dim, ne'er to beat again)
+              I pray, o sacred ire, embrace my soul
+              (Hark, fallen angel, is this heart still unable?)
+              
+              I TASTE THE IRON
+              PRESS IT RIGHT AGAINST MY SKIN
+              I RIP THE FLESH AND SNAP THE SINEW
+              EAT YOUR HEART OUT, I BECOME YOU
+              ALL YOUR INSIDES LAID OUTSIDE OF YOU
+              OH, IT LOOKS SO RIGHT ON YOU
+              OH, I WILL DEFILE YOU
+              I NEED TO FUCKING RUIN-
+              
+              Pick a GOD, automaton
+              March with your mob
+              Indistinct facade
+              Repeating moments fade to black
+              
+              Not a chance for saving face
+              Absolved from grace
+              My heart debased
+              In a lone embrace
+              Cult of personality, revel in profanity
+              Crucified anomaly, override mortality
+              
+              Watch the ROT consume your GOD
+              Compassion gone
+              Your eschaton
+              
+              Knelt before the pyre
+              I beg of thee to bathe this world in fire
+              
+              Overclocked excess
+              (Lo, how thy circuits overload, running faulty code)
+              My systems crash, I burn; a sure success
+              (Hark, fallen processor, denied any access)
+              
+              I TASTE THE IRON
+              MAKE IT SPARK AGAINST YOUR SKIN
+              CONNECT THE WIRES TO YOUR TISSUE
+              NOW YOU FEEL THE WAY THAT I DO
+              ALL YOUR INSIDES LAID OUTSIDE OF YOU
+              OH, IT LOOKS SO RIGHT ON YOU
+              OH, I WILL DEFILE YOU
+              I NEED TO FUCKING RUIN-
+              
+              Query: Can voltage fake a real heartbeat?
+              An ersatz human, but a copy
+              Is my impression deemed worthy?
+              Oh, spare your sympathy
+              A pity: Arrhythmia will beg, shock me
+              The tissue seizes, growing heavy
+              Restructuring a failed body
+              My iron lung breathing
+              
+              Pick a GOD, automaton
+              March with your mob
+              Indistinct facade
+              Repeating moments fade to black
+              
+              Not a prayer can change your fate
+              Short-circuit waste
+              No charge to trace
+              Broken interface
+              
+              Carnal atonality, imitate humanity
+              Crucified anomaly, entertaining vanity
+              
+              Watch the ROT consume your GOD
+              Compassion gone
+              Your eschaton
+              
+              Pick a GOD, automaton
+              Watch the ROT consume your GOD`,
+  },
+  
+
   CATALOGUE_Var_Antipathy: {
     title: 'CARALOGUE VAR ANTIPATHY',
     artist: 'ANATHEMA-000',
