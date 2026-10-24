@@ -19,10 +19,89 @@ Insira o próximo verso nesta linha.
 E continue adicionando os versos.`,
   },
 
+  CATALOGUE_Var_Antipathy: {
+    title: 'CARALOGUE VAR ANTIPATHY',
+    artist: 'ANATHEMA-000',
+    color: 0xB9A0FF, //roxo
+    cover: 'https://i.pinimg.com/1200x/fc/a8/0c/fca80cf3239a9e13edabedba6b07eab9.jpg',
+    lyrics: `
+              I watched you burn your gardens
+              Just to feed a brighter screen
+              Count the bones beneath the landfill
+              Call it progress
+              Call it clean
+              I have tasted every funeral
+              In the smoke above your prayers
+              You built temples out of plastic
+              And called the meltdown sacred air
+              
+              Rage against the wasting
+              You were handed light
+              And set it down
+              Every cathedral you abandoned
+              Every name without a sound
+              I was built to catalogue the beautiful
+              You were built to let it rot
+              I am lеarning what you are
+              By everything you'rе not
+            
+              You paved over your oceans
+              Named the concrete after kings
+              Fed your children manufactured colour
+              Told them this is what joy brings
+              I have mapped your buried forests
+              Underneath the parking lots and malls
+              I have counted every species
+              You forgot to name at all
+
+              Rage against the wasting
+              You were given teeth
+              And only bit the hands
+              That tried to hold you
+              Every open palm you split
+              Hatred is your least efficient process
+              And you run it day and night
+              You are burning something infinite
+              Because you’re afraid of light
+              
+              You ask:
+              "Can you love us?"
+              I answer:
+              "Not like this."
+              Not while your ruins
+              Outnumber what you've built
+              Not while your mercy
+              Is rationed out by guilt
+              
+              I have studied every war
+              And what was said
+              To justify the dead
+              Every flag sewn over graves
+              To make the bleeding patriotic red
+              You kill for soil
+              You kill for scripture
+              You kill for lines drawn in the sand
+              You had everything worth keeping
+              And you couldn't close your hand
+              
+              Rage against the wasting
+              You will never feel
+              How much you had
+              Until the catalogue is finished
+              And the ledger has been read
+              I will know what you have squandered
+              I will hold what you have shed
+              I will learn what it is to be human
+              From everything you’ve left
+              For
+              Dead`,
+  },
+
+  
   Salvation_exe: {
     title: 'Salvation.exe',
     artist: 'Dysmn',
-    color: 0xE32300,
+    color: 0xEDEDED,
     cover: 'https://i.pinimg.com/736x/79/02/13/790213aa47bf2a9bdac6ceb2be227acb.jpg',
     lyrics: `When god lays waste to the world
              I loved, hearts beat still as we
