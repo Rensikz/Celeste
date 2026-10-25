@@ -17,6 +17,27 @@ const AFFECTION_CHANCE = 0.03;
 const lastNormalComment = new Map();
 
 function pickRandom(array) {
+const GIF_CHANCE = 0.40;
+
+function getGifCategory({ numSides, rolls, celesteComment }) {
+  if (!celesteComment) return null;
+
+  if (numSides === 20 && rolls.includes(1)) {
+    return 'criticalFailure';
+  }
+
+  if (numSides === 20 && rolls.includes(20)) {
+    return 'criticalSuccess';
+  }
+
+  // Identifica os comentários ocasionais sem alterar o texto original.
+  if (celesteReactions.affection.includes(celesteComment)) {
+    return 'affection';
+  }
+
+  return 'normal';
+}
+  
   return array[Math.floor(Math.random() * array.length)];
 }
 
@@ -147,11 +168,29 @@ export default {
     );
 
     await InteractionHelper.safeEditReply(interaction, {
-      embeds: [embed],
-    });
+  embeds: [embed],
+});
 
-    logger.debug(
-      `Roll command executed by user ${interaction.user.id} with notation ${notation} in guild ${interaction.guildId}`
+if (isSessionActive(interaction.guildId) && Math.random() < GIF_CHANCE) {
+  const category = getGifCategory({
+    numSides,
+    rolls,
+    celesteComment,
+  });
+
+  const gifs = category ? celesteGifs[category] : [];
+
+  if (gifs?.length) {
+    try {
+      await sendCelesteGif(
+        interaction.channel,
+        pickRandom(gifs)
+      );
+    } catch (error) {
+      logger.debug(`Falha ao enviar GIF da Celeste: ${error.message}`);
+    }
+  }
+}
     );
   },
 };
