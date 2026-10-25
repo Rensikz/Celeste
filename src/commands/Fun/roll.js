@@ -5,6 +5,9 @@ import { logger } from '../../utils/logger.js';
 import { TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
 import { InteractionHelper } from '../../utils/interactionHelper.js';
 import celesteReactions from '../../data/celesteReactions.js';
+import celesteGifs from '../../data/celesteGifs.js';
+import { isSessionActive } from '../../utils/celesteSession.js';
+import { sendCelesteGif } from '../../utils/celesteGifSender.js';
 
 const NORMAL_COMMENT_CHANCE = 0.15;
 const NORMAL_COMMENT_COOLDOWN = 60_000;
