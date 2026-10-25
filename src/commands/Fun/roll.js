@@ -12,12 +12,14 @@ import { sendCelesteGif } from '../../utils/celesteGifSender.js';
 const NORMAL_COMMENT_CHANCE = 0.15;
 const NORMAL_COMMENT_COOLDOWN = 60_000;
 const AFFECTION_CHANCE = 0.03;
+const GIF_CHANCE = 0.40;
 
 // Cooldown em memória, separado por jogador.
 const lastNormalComment = new Map();
 
 function pickRandom(array) {
-const GIF_CHANCE = 0.40;
+  return array[Math.floor(Math.random() * array.length)];
+}
 
 function getGifCategory({ numSides, rolls, celesteComment }) {
   if (!celesteComment) return null;
@@ -30,15 +32,11 @@ function getGifCategory({ numSides, rolls, celesteComment }) {
     return 'criticalSuccess';
   }
 
-  // Identifica os comentários ocasionais sem alterar o texto original.
   if (celesteReactions.affection.includes(celesteComment)) {
     return 'affection';
   }
 
   return 'normal';
-}
-  
-  return array[Math.floor(Math.random() * array.length)];
 }
 
 function getCelesteComment({ numSides, rolls, userId }) {
@@ -62,13 +60,11 @@ function getCelesteComment({ numSides, rolls, userId }) {
     return null;
   }
 
-  // Pequena chance de demonstrar afeto e imediatamente se arrepender.
   if (Math.random() < AFFECTION_CHANCE) {
     lastNormalComment.set(userId, now);
     return pickRandom(celesteReactions.affection);
   }
 
-  // Comentários comuns são ocasionais.
   if (Math.random() < NORMAL_COMMENT_CHANCE) {
     lastNormalComment.set(userId, now);
     return pickRandom(celesteReactions.normal);
@@ -81,9 +77,9 @@ export default {
   data: new SlashCommandBuilder()
     .setName('roll')
     .setDescription(
-      'Rolls dice using standard notation (e.g., 2d20, 1d6 + 5).'
+      'Rolls dice using standard notation (e.g., 2d20, 1d6 + 4).'
     )
-    .addStringOption((option) =>
+    .addStringOption(option =>
       option
         .setName('notation')
         .setDescription('The dice notation (e.g., 2d6, 1d20 + 4)')
@@ -168,29 +164,39 @@ export default {
     );
 
     await InteractionHelper.safeEditReply(interaction, {
-  embeds: [embed],
-});
+      embeds: [embed],
+    });
 
-if (isSessionActive(interaction.guildId) && Math.random() < GIF_CHANCE) {
-  const category = getGifCategory({
-    numSides,
-    rolls,
-    celesteComment,
-  });
+    // GIFs só são enviados durante uma sessão ativa.
+    if (
+      interaction.guildId &&
+      isSessionActive(interaction.guildId) &&
+      Math.random() < GIF_CHANCE
+    ) {
+      const category = getGifCategory({
+        numSides,
+        rolls,
+        celesteComment,
+      });
 
-  const gifs = category ? celesteGifs[category] : [];
+      const gifs = category ? celesteGifs[category] : [];
 
-  if (gifs?.length) {
-    try {
-      await sendCelesteGif(
-        interaction.channel,
-        pickRandom(gifs)
-      );
-    } catch (error) {
-      logger.debug(`Falha ao enviar GIF da Celeste: ${error.message}`);
+      if (gifs?.length) {
+        try {
+          await sendCelesteGif(
+            interaction.channel,
+            pickRandom(gifs)
+          );
+        } catch (error) {
+          logger.debug(
+            `Falha ao enviar GIF da Celeste: ${error.message}`
+          );
+        }
+      }
     }
-  }
-}
+
+    logger.debug(
+      `Roll command executed by user ${interaction.user.id} with notation ${notation} in guild ${interaction.guildId}`
     );
   },
 };
