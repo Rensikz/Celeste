@@ -5,6 +5,7 @@ import { logger } from '../../utils/logger.js';
 import { TitanBotError, ErrorTypes } from '../../utils/errorHandler.js';
 import { InteractionHelper } from '../../utils/interactionHelper.js';
 import celesteReactions from '../../data/celesteReactions.js';
+import celestePlayerReactions from '../../data/celestePlayerReactions.js';
 import celesteGifs from '../../data/celesteGifs.js';
 import { isSessionActive } from '../../utils/celesteSession.js';
 import { sendCelesteGif } from '../../utils/celesteGifSender.js';
@@ -13,30 +14,45 @@ const NORMAL_COMMENT_CHANCE = 0.15;
 const NORMAL_COMMENT_COOLDOWN = 60_000;
 const AFFECTION_CHANCE = 0.03;
 const GIF_CHANCE = 0.40;
+const PERSONAL_REACTION_CHANCE = 0.50;
 
 // Cooldown em memória, separado por jogador.
 const lastNormalComment = new Map();
 
 function pickRandom(array) {
+  if (!Array.isArray(array) || array.length === 0) {
+    return null;
+  }
+
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function getGifCategory({ numSides, rolls, celesteComment }) {
-  if (!celesteComment) return null;
+// Escolhe entre a lista geral e a personalizada.
+function getReaction(category, userId) {
+  const generalReactions = (
+    celesteReactions[category] || []
+  ).filter(Boolean);
 
-  if (numSides === 20 && rolls.includes(1)) {
-    return 'criticalFailure';
+  const personalReactions = (
+    celestePlayerReactions[userId]?.[category] || []
+  ).filter(Boolean);
+
+  // Sem reações personalizadas: utiliza a lista geral.
+  if (personalReactions.length === 0) {
+    return pickRandom(generalReactions);
   }
 
-  if (numSides === 20 && rolls.includes(20)) {
-    return 'criticalSuccess';
+  // Sem reações gerais: utiliza a lista personalizada.
+  if (generalReactions.length === 0) {
+    return pickRandom(personalReactions);
   }
 
-  if (celesteReactions.affection.includes(celesteComment)) {
-    return 'affection';
+  // Ambas existem: 50% geral / 50% personalizada.
+  if (Math.random() < PERSONAL_REACTION_CHANCE) {
+    return pickRandom(personalReactions);
   }
 
-  return 'normal';
+  return pickRandom(generalReactions);
 }
 
 function getCelesteComment({ numSides, rolls, userId }) {
@@ -44,11 +60,17 @@ function getCelesteComment({ numSides, rolls, userId }) {
   if (numSides === 20) {
     // A falha tem prioridade se houver 1 e 20 na mesma rolagem.
     if (rolls.includes(1)) {
-      return pickRandom(celesteReactions.criticalFailure);
+      return {
+        text: getReaction('criticalFailure', userId),
+        category: 'criticalFailure',
+      };
     }
 
     if (rolls.includes(20)) {
-      return pickRandom(celesteReactions.criticalSuccess);
+      return {
+        text: getReaction('criticalSuccess', userId),
+        category: 'criticalSuccess',
+      };
     }
   }
 
@@ -61,13 +83,29 @@ function getCelesteComment({ numSides, rolls, userId }) {
   }
 
   if (Math.random() < AFFECTION_CHANCE) {
-    lastNormalComment.set(userId, now);
-    return pickRandom(celesteReactions.affection);
+    const text = getReaction('affection', userId);
+
+    if (text) {
+      lastNormalComment.set(userId, now);
+
+      return {
+        text,
+        category: 'affection',
+      };
+    }
   }
 
   if (Math.random() < NORMAL_COMMENT_CHANCE) {
-    lastNormalComment.set(userId, now);
-    return pickRandom(celesteReactions.normal);
+    const text = getReaction('normal', userId);
+
+    if (text) {
+      lastNormalComment.set(userId, now);
+
+      return {
+        text,
+        category: 'normal',
+      };
+    }
   }
 
   return null;
@@ -148,14 +186,14 @@ export default {
     let description =
       `${resultsDetail}**Total Roll:** ${totalRoll}${modifierText} = **${finalTotal}**`;
 
-    const celesteComment = getCelesteComment({
+    const celesteResponse = getCelesteComment({
       numSides,
       rolls,
       userId: interaction.user.id,
     });
 
-    if (celesteComment) {
-      description += `\n\n💬 **Celeste:** ${celesteComment}`;
+    if (celesteResponse?.text) {
+      description += `\n\n💬 **Celeste:** ${celesteResponse.text}`;
     }
 
     const embed = successEmbed(
@@ -173,12 +211,7 @@ export default {
       isSessionActive(interaction.guildId) &&
       Math.random() < GIF_CHANCE
     ) {
-      const category = getGifCategory({
-        numSides,
-        rolls,
-        celesteComment,
-      });
-
+      const category = celesteResponse?.category;
       const gifs = category ? celesteGifs[category] : [];
 
       if (gifs?.length) {
