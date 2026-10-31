@@ -16,7 +16,8 @@ export default {
     'Se quiser desistir.. só falar!',
     'Isso foi... algo... definitivamente algo. 💀',
     '*click* Oh? só estou tirando um print.. pode prosseguir x3',
-    'Eu faria isso de olhos fechados..'
+    'Eu faria isso de olhos fechados..',
+    'TESTE 💀 🎲 💬 ✨ ♡'
   ],
 
   // Um 20 natural no d20.
