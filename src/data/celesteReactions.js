@@ -17,7 +17,13 @@ export default {
     'Isso foi... algo... definitivamente algo. 💀',
     '*click* Oh? só estou tirando um print.. pode prosseguir x3',
     'Eu faria isso de olhos fechados..',
-    'TESTE 💀 🎲 💬 ✨ ♡'
+    'Na próxima vai.. (ou não :P) ♡',
+    'Damn...😭',
+    'Pfft.. Hahaha! D-Desculpa.. Não consegui segurar xD',
+    'Teria sido melhor ver o filme do pelé!🎬🍿',
+    '*Musica triste* Pode chorar.. é ação livre. :D',
+    'Eu... vou fingir que não vi isso, okay? okay.',
+    'Celeste, clipe isso!😏'
   ],
 
   // Um 20 natural no d20.
@@ -33,11 +39,14 @@ export default {
     'Sorte de principiante... novamente. 🙄',
     'Slay! 💅✨. Não... Pera! ESSE É O MEU TRABALHO! 😭',
     'Urgh, cê sabe que se eu quisesse eu poderia mudar sua rolagem né? 💀',
+    'Ô! Até parece que sabe o que tá fazendo. xD',
+    'Não deixe subir sua cabeça! Você ainda não ganhou! Hmpf!😤',
+    'Eu deixei?!😾'
   ],
 
   // Comentários ocasionais em rolagens comuns.
   normal: [
-    'hmmge. the dice have spoken. :3',
+    'hmpf. the dice have spoken. :3',
     'rolagem registrada. julgamento moral pendente.',
     'okay bestie, I see you. não significa que estou impressionada.',
     'interesting... muito interessante. suspeitamente interessante. 👁️',
