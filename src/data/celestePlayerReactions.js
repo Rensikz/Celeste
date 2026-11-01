@@ -8,12 +8,12 @@ export default {
       'Caramba Victor... acho que você foi hackeado novamente 💀',
       'Ei, ei calma, pensa assim: Podia ser pior Victor, pelo menos agora você tem namorada rsrs',
       'Gente... sabe o que isso me lembra? Yoseff colocou em seus arquivos que você tinha potencial desperdiçado. Oh well x3',
-      'Como se sente? pelo menos você não usa poderes. Respect.',
+      'Como se sente? Pelo menos você não usa poderes. Respect.',
       'Não vai morrer agora né? seria muitooooooo paia, juro. x3'
     ],
 
     criticalSuccess: [
-      'Beatrice deve tar orgulhosa, não se esqueça de agradecê-la por mim :P',
+      'Beatrice deve tar orgulhosa. Não se esqueça de agradecê-la por mim :P',
       'José faria melhor, ou não.. será? bom, ele era o mais popular né.',
       'Caramba, agora entendi o motivo do papai dizer que você era uma variável interessante. Nice xD',
       'Sorte, sempre sorte... Se bem que você teve o azar de entrar nessa vida né? :/',
@@ -50,12 +50,12 @@ export default {
       'Caraca, é assim que você conquistou o coração sociopático da Alana?',
       'holy moly. Impressionante para alguém que tem sei lá quantos dentro de ti.. lá ele 1000x',
       'Sabe o que isso me lembra? Gabriel adoraria estar aqui, não? Nerdolinha parece até o Victor.',
-      'Ah é! Esqueci que você tem potencial, dava demorando para mostrar Murilinho!',
+      'Ah é! Esqueci que você tem potencial, tava demorando para mostrar Murilinho!',
     ],
 
     normal: [
-      'Estou começando a reconhecer um padrão preocupante Murilo. Você.',
-      'Assim, não se ganha todas, mas também não se perde todas, e tem pessoas como você Murilo: Quero todos.',
+      'Estou começando a reconhecer um padrão preocupante, Murilo. Você.',
+      'Assim, não se ganha todas, mas também não se perde todas, e tem pessoas como você, Murilo: Quero todos.',
       'Nero ainda tá aí? parece que tá dormindo Murilo...',
     ],
 
@@ -66,16 +66,16 @@ export default {
   '373596776562950145': {//Boni
     criticalFailure: [
       'Sanchez, Domi, Nique, Nick, Ny-... PARA QUÊ TANTO NOME GAROTA?! TÁ DEVENDO?!',
-      'Sabe o que é curioso? seu rosto fica todo nublado quando tento tirar print da suas caretas, shy girlie? >.<',
+      'Sabe o que é curioso? seu rosto fica todo nublado quando tento tirar print das suas caretas, shy girlie? >.<',
       'Ei! Calma, também não vamos dar uma de Marcelo aqui, okay? Você disse muito sobre self-sacrifice. Mas CALMA. Tehee x3',
-      'Filha de ilha? caramba, você é de mais distante que o Ruarez, engraçado. :V',
+      'Filha de ilha? caramba, você é de um lugar mais distante que o Ruarez, engraçado. :V',
       'Sanchez, lembre-se, queixo para cima, lança acompanha o corpo. Não: Cabeceie tudo e todos...',
-      'Querida... Juro... Eu não to nem manipulando agora, isso é... é...',
-      'Nique.. respira.. calma.. Qualquer coisa atira no dedo do Victor, as vezes funciona. :D',
+      'Querida... Juro... Eu não tô nem manipulando agora, isso é... é...',
+      'Nique.. respira.. calma.. Qualquer coisa atira no dedo do Victor, às vezes funciona. :D',
     ],
 
     criticalSuccess: [
-      'Damn girl! Gregory estava errado sobre ti, você não é só um(a) .dll defeituosa(o) >.<',
+      'Damn girl! Gregory estava errado sobre ti. Você não é só um(a) .dll defeituosa(o) >.<',
       'Tá solteira por escolha, mas também, que outra escolha você teria né? :P',
       'Chat... clipa isso, a Sanchez conseguiu fazer algo que era para ela falhar! To pasma! :P',
       'A Dona Helena sabe muito bem como fazer um espécime, huh? Fábrica de qualidade!',
@@ -97,17 +97,17 @@ export default {
 
   '448930314140647424': {//Mendz
     criticalFailure: [
-      'Caramba... Acho que você deveria usar uma máscara Ruarez.. :P',
+      'Caramba... Acho que você deveria usar uma máscara, Ruarez.. :P',
       'É... Ei, calma, não é TOTALMENTE culpa sua.. você não é um marcado >.<',
       'Vish... Ainda bem que a Larissa não viu isso, huh?',
       'Se não é o Piloto, o Infiltrador, A LENDA... ah, pera.. você falhou.. deixa pra lá.. :P',
-      'Ruarez, me diga... os sunglasses estão atrapalhando? tão né? é.. tira eles :D',
-      'Morde o Murilo novamente, dava dando mais certo quando você tava mordendo *GOBBLE GOBBLE*',
+      'Ruarez, me diga... os sunglasses estão atrapalhando? tão, né? é.. tira eles :D',
+      'Morde o Murilo novamente, tava dando mais certo quando você tava mordendo *GOBBLE GOBBLE*',
       'Cara, você tem mo jeitinho de vilão.. pera.. esse é o seu arco de vilão? *GASP* yay, adoro uma backstory triste, me lembra de casa.',
     ],
 
     criticalSuccess: [
-      'VISH! Quem precisa de marca, quando se tem skill, right Ruh? Hahaha... Pare. :P',
+      'VISH! Quem precisa de Marca, quando se tem skill, right Ruh? Hahaha... Pare. :P',
       'Migo.. juro.. desde quando você é competente? Quem te deu o buff antes da sessão Ruarez? >:(',
       'Chat! Olha! É aquele cara do grupo Ômega! Aquele que some! ué.. Cadê ele? >.<',
       '!? Como assim? Era para você ter morrido naquele C-... pera.. AAAh por isso.. Hmpf, sortudo! :P',
