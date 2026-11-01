@@ -14,6 +14,20 @@ const spontaneousMessages = [
   'Lembrete amigável: eu tenho registros de tudo. Absolutamente tudo. :3',
   'Vocês chamam isso de plano? Interessante. Eu chamaria de documentação para um desastre.',
   'Não se preocupem, estou aqui para ajudar! Os resultados dessa ajuda podem variar. :D',
+  'Dica: Prestem atenção ao seu redor! quem sabe o que podem achar né?',
+  'Lembrete não tão amigável: Posso matar vocês se eu quisesse >.<',
+  'Rain check, como estão equipe Ômega?... Que bom!',
+  'Não esqueçam de dar uma nota de 0 a 10 após sua experiência. >///<',
+  'Dica: Alguns quartos podem ter camas, dormir nelas é confortável!',
+  'Dica: Após 15 salas, coisas novas vão acontecer!',
+  'Lembre-se!... Do que? não sei, vocês eram para lembrar, não eu. >:P',
+  'Não se esqueçam! Bajular a dona do labirinto pode haver resultados favoráveis! (Me elogiem, eu mereço >:3)',
+  'Após me ouvirem cantando por tanto tempo, pergunto-lhes: Eu canto bem? Papai diz que sim... mas ele sempre gosta do que eu faço >:3',
+  'Papai está fazendo isso por todos, ainda não entendo o motivo de estarmos brigando. :/',
+  'Ruarez, Sanchez, Murilo, Victor, Virgulino, Fabrício, Stephany... Só gente da pesada ein? Brutal...',
+  'O paranormal não vem de forma fácil para o nosso lado, mas quando ele se manifesta.. é uma DESGRAÇA >:(',
+  'Dica: Todas as salas contêem pelo menos 1 loot, se não achou nenhum, pode ser que deixaram algo passar... :P',
+  'Gente, Ordo Realitas é um nome tão.. cafona, irônico... precisa de um toque feminino.',
 ];
 
 function scheduleNextMessage(guildId) {
