@@ -9,7 +9,7 @@ export default {
       'Ei, ei calma, pensa assim: Podia ser pior Victor, pelo menos agora você tem namorada rsrs',
       'Gente... sabe o que isso me lembra? Yoseff colocou em seus arquivos que você tinha potencial desperdiçado. Oh well x3',
       'Como se sente? Pelo menos você não usa poderes. Respect.',
-      'Não vai morrer agora né? seria muitooooooo paia, juro. x3'
+      'Não vai morrer agora né Victor? seria muitooooooo paia, juro. x3'
     ],
 
     criticalSuccess: [
